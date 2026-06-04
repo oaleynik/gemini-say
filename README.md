@@ -39,7 +39,7 @@ gemini-say --list-voices
 Single-speaker WAV output:
 
 ```bash
-echo 'Have a wonderful day!' | gemini-say --voice Zephyr --output out.wav
+echo 'Have a wonderful day!' | gemini-say --voice Aoede --output out.wav
 ```
 
 Prompt style controls delivery details such as pace, pitch, emotion, accent, and pauses:
