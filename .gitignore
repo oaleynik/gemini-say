@@ -1,0 +1,8 @@
+gemini-say
+*.wav
+*.mp3
+*.pcm
+*.ogg
+*.opus
+*.aiff
+dist/
