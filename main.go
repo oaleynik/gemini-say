@@ -57,6 +57,8 @@ var voices = map[string]string{
 	"Zubenelgenubi": "Casual",
 }
 
+var generateSpeechFunc = generateSpeech
+
 type generateRequest struct {
 	Contents         []content        `json:"contents"`
 	GenerationConfig generationConfig `json:"generationConfig"`
@@ -266,7 +268,7 @@ func run(ctx context.Context, args []string, stdin io.Reader, stdout io.Writer, 
 		return errors.New("text is empty; pass text as arguments or stdin")
 	}
 
-	audio, err := generateSpeech(ctx, apiKey, options, text)
+	audio, err := generateSpeechFunc(ctx, apiKey, options, text)
 	if err != nil {
 		return err
 	}
