@@ -1,5 +1,10 @@
 # gemini-say
 
+[![CI](https://github.com/oaleynik/gemini-say/actions/workflows/ci.yml/badge.svg)](https://github.com/oaleynik/gemini-say/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/oaleynik/gemini-say)](https://github.com/oaleynik/gemini-say/releases/latest)
+[![Go Reference](https://pkg.go.dev/badge/github.com/oaleynik/gemini-say.svg)](https://pkg.go.dev/github.com/oaleynik/gemini-say)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/oaleynik/gemini-say)](https://github.com/oaleynik/gemini-say/blob/main/go.mod)
+
 `gemini-say` reads text from arguments or stdin, sends it to Gemini TTS, and writes audio to a file or stdout.
 
 It is intentionally small and Unix-friendly: pass text inline or through a pipe, choose a voice and style, and save the generated speech without starting an interactive agent.
