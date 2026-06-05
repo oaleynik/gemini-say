@@ -254,14 +254,16 @@ func run(ctx context.Context, args []string, stdin io.Reader, stdout io.Writer, 
 		return fmt.Errorf("%s is not set", apiKeyEnv)
 	}
 
-	input, err := io.ReadAll(stdin)
-	if err != nil {
-		return fmt.Errorf("read stdin: %w", err)
-	}
-
-	text := strings.TrimSpace(string(input))
+	text := strings.TrimSpace(strings.Join(flags.Args(), " "))
 	if text == "" {
-		return errors.New("stdin is empty")
+		input, err := io.ReadAll(stdin)
+		if err != nil {
+			return fmt.Errorf("read stdin: %w", err)
+		}
+		text = strings.TrimSpace(string(input))
+	}
+	if text == "" {
+		return errors.New("text is empty; pass text as arguments or stdin")
 	}
 
 	audio, err := generateSpeech(ctx, apiKey, options, text)
@@ -280,9 +282,10 @@ func run(ctx context.Context, args []string, stdin io.Reader, stdout io.Writer, 
 func printHelp(w io.Writer, flags *flag.FlagSet) {
 	fmt.Fprintln(w, "gemini-say")
 	fmt.Fprintln(w)
-	fmt.Fprintln(w, "Reads text from stdin, sends it to Gemini TTS, and writes audio to a file or stdout.")
+	fmt.Fprintln(w, "Reads text from arguments or stdin, sends it to Gemini TTS, and writes audio to a file or stdout.")
 	fmt.Fprintln(w)
 	fmt.Fprintln(w, "Usage:")
+	fmt.Fprintln(w, "  gemini-say [flags] \"text to speak\"")
 	fmt.Fprintln(w, "  gemini-say [flags] < input.txt")
 	fmt.Fprintln(w)
 	fmt.Fprintln(w, "Environment:")
@@ -293,10 +296,13 @@ func printHelp(w io.Writer, flags *flag.FlagSet) {
 	fmt.Fprintln(w)
 	fmt.Fprintln(w, "Examples:")
 	fmt.Fprintln(w, "  # Single-speaker WAV file")
+	fmt.Fprintln(w, "  gemini-say --voice Kore --output out.wav 'Welcome to the demo.'")
+	fmt.Fprintln(w)
+	fmt.Fprintln(w, "  # Read text from stdin")
 	fmt.Fprintln(w, "  echo 'Welcome to the demo.' | gemini-say --voice Kore --output out.wav")
 	fmt.Fprintln(w)
 	fmt.Fprintln(w, "  # Override the default model explicitly")
-	fmt.Fprintln(w, "  echo 'Have a wonderful day!' | gemini-say --model gemini-3.1-flash-tts-preview --voice Zephyr --output out.wav")
+	fmt.Fprintln(w, "  gemini-say --model gemini-3.1-flash-tts-preview --voice Zephyr --output out.wav 'Have a wonderful day!'")
 	fmt.Fprintln(w)
 	fmt.Fprintln(w, "  # Prompt style controls pace, pitch, emotion, accent, and pauses")
 	fmt.Fprintln(w, "  echo 'By the pricking of my thumbs, something wicked this way comes.' | gemini-say --voice Enceladus --style 'Speak slowly in a spooky whisper with short pauses' --output spooky.wav")

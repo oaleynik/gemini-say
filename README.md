@@ -1,6 +1,6 @@
 # gemini-say
 
-`gemini-say` reads text from stdin, sends it to Gemini TTS, and writes audio to a file or stdout.
+`gemini-say` reads text from arguments or stdin, sends it to Gemini TTS, and writes audio to a file or stdout.
 
 ## Install
 
@@ -17,6 +17,12 @@ export GEMINI_API_KEY=...
 ```
 
 ## Usage
+
+```bash
+gemini-say --voice Kore --output out.wav 'Welcome to the demo.'
+```
+
+You can also pipe or redirect text through stdin:
 
 ```bash
 echo 'Welcome to the demo.' | gemini-say --voice Kore --output out.wav
@@ -39,7 +45,7 @@ gemini-say --list-voices
 Single-speaker WAV output:
 
 ```bash
-echo 'Have a wonderful day!' | gemini-say --voice Aoede --output out.wav
+gemini-say --voice Aoede --output out.wav 'Have a wonderful day!'
 ```
 
 Prompt style controls delivery details such as pace, pitch, emotion, accent, and pauses:
