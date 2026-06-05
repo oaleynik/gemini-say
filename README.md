@@ -2,6 +2,12 @@
 
 `gemini-say` reads text from arguments or stdin, sends it to Gemini TTS, and writes audio to a file or stdout.
 
+## Demo
+
+<video src="assets/demo.mp4" controls width="100%" aria-label="gemini-say demo"></video>
+
+If the video does not render, [watch the demo](assets/demo.mp4).
+
 ## Install
 
 ```bash
