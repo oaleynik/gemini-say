@@ -2,6 +2,8 @@
 
 `gemini-say` reads text from arguments or stdin, sends it to Gemini TTS, and writes audio to a file or stdout.
 
+It is intentionally small and Unix-friendly: pass text inline or through a pipe, choose a voice and style, and save the generated speech without starting an interactive agent.
+
 ## Demo
 
 https://github.com/user-attachments/assets/a8700236-0e01-4e13-917f-8d78a3e7d54d
@@ -43,6 +45,18 @@ List supported voices:
 ```bash
 gemini-say --list-voices
 ```
+
+## Why gemini-say?
+
+- Small single-purpose CLI for Gemini text-to-speech.
+- Reads from positional arguments or stdin, so it works naturally in shell pipelines.
+- Writes to a file or stdout for composition with other tools.
+- Supports single-speaker and two-speaker Gemini TTS voices.
+- Supports WAV, raw PCM, and compressed formats when the selected model supports them.
+
+The official [Gemini CLI](https://github.com/google-gemini/gemini-cli) is a broader terminal AI agent for coding, file operations, shell commands, and MCP extensions. `gemini-say` focuses only on turning text into speech.
+
+Other community Gemini TTS tools exist, including Python and .NET CLIs. `gemini-say` is meant to stay minimal, dependency-light, and easy to install with `go install`.
 
 ## Examples
 
