@@ -4,7 +4,7 @@
 
 ## Demo
 
-https://github.com/user-attachments/assets/ab8e7a79-2d62-4913-b073-b25f1d319ce8
+https://github.com/user-attachments/assets/a8700236-0e01-4e13-917f-8d78a3e7d54d
 
 ## Install
 
