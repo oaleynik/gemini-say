@@ -4,9 +4,7 @@
 
 ## Demo
 
-<video src="assets/demo.mp4" controls width="100%" aria-label="gemini-say demo"></video>
-
-If the video does not render, [watch the demo](assets/demo.mp4).
+https://github.com/user-attachments/assets/ab8e7a79-2d62-4913-b073-b25f1d319ce8
 
 ## Install
 
